@@ -1,0 +1,25 @@
+
+{% extends 'listings/base.html' %}
+
+{% block title %}Listings{% endblock title %}
+
+{% block content %}
+<h1>Listing</h1>
+
+<div>
+  <h3>{{lists.title}}</h3>
+  <ul>
+    <li>{{lists.description}}</li>
+   
+    <li>{{lists.types}}</li>
+    <li>{{lists.band}}</li>
+  </ul>
+
+  <li><a href="{% url 'list-list' %}">{{lists.title}}</a></li>
+</div>
+
+
+{% endblock content %}
+  
+
+

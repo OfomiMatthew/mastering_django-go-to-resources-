@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <title>{% block title %} Home {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'listings/styles.css' %}">
+  </head>
+  <body>
+
+    <nav>
+      <ul>
+      <li><a href='{% url "band-list" %}'>Bands</a></li>
+     <li><a href='{% url "list-list" %}'>Listings</a></li> 
+    </ul>
+    </nav>
+    {% block content %} {% endblock content %}
+  </body>
+</html>

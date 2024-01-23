@@ -1,0 +1,16 @@
+{% extends "listings/base.html" %}
+
+
+{% block title %} Hello {% endblock %} 
+
+
+{% block content %}
+<h2>Band List</h2>
+<ul>
+  {% for band in bands %}
+  <li><a href="{% url 'band-detail' band.id %}">{{band.name}}</a></li>
+  {% comment %} <li>{{band}}</li> {% endcomment %}
+  {% endfor %}
+</ul>
+
+{% endblock %}
