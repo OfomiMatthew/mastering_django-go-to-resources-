@@ -1,11 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from listings.models import Band, Listing
 from listings.forms import ContactForm
+from listings.forms import BandForm
+from django.core.mail import send_mail
 
 # Create your views here.
 
 # get all band
+def email(request):
+  return render(request,'listings/email.html')
+
 
 def homePage(request):
   band = Band.objects.all()
@@ -41,6 +46,33 @@ def list_detail(request,list_id):
     return HttpResponseNotFound("No Listing found")
     
 def contact(request):
-  form = ContactForm()
+  if request.method == 'POST':
+    
+    
+    form = ContactForm(request.POST)
+    if form.is_valid():
+      send_mail(
+        subject=f'Message from {form.cleaned_data["name"] or "anonymous"} via MerchEx Contact us form',
+        message=form.cleaned_data['message'],from_email=form.cleaned_data['email'],
+        recipient_list=['ofomimatthew7@gmail.com']
+        
+        )
+      return redirect('email-sent')
+  
+  
+  
+  else:
+    form = ContactForm()
+    
+    
+    
+  # print('method: ', request.method)
+  # print('posting: ', request.POST)
+  
   return render(request,'listings/contact.html',{'form':form})
   
+
+# create bands
+def band_create(request):
+  form = BandForm()
+  return render(request,'listings/band_create.html',{'form':form})

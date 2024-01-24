@@ -1,0 +1,23 @@
+{% extends 'listings/base.html' %}
+
+
+{% block title %}
+  Create Bands
+{% endblock title %}
+  
+{% block content %}
+
+
+<h1>Create Bands</h1>
+
+
+<form action="" method='post' novalidate>
+  {% csrf_token %}
+  {{form.as_p}}
+
+<input type="submit" value="Submit">
+</form>
+
+
+{% endblock content %}
+

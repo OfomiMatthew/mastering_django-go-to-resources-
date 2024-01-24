@@ -11,12 +11,12 @@ class Band(models.Model):
     GOSPEL ="GP"
   name = models.CharField(max_length=200)
   
-  genre = models.CharField(choices =Genre.choices, max_length=5, default="")
+  genre = models.CharField(choices =Genre.choices, max_length=5)
   biography = models.CharField(max_length=200, default="")
   year_formed = models.IntegerField(
     validators=[MinValueValidator(1900), MaxValueValidator(2024)], default=""
                                     )
-  active = models.BooleanField(default=True)
+  active = models.BooleanField(default="")
   official_homepage = models.URLField(null=True,blank=True)
   
   def __str__(self):
