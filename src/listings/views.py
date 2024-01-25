@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from listings.models import Band, Listing
-from listings.forms import ContactForm
-from listings.forms import BandForm
+
+from listings.forms import BandForm, ListingForm,ContactForm
 from django.core.mail import send_mail
 
 # Create your views here.
@@ -86,3 +86,16 @@ def band_create(request):
     
   
   return render(request,'listings/band_create.html',{'form':form})
+
+
+def list_create(request):
+  if request.method == 'POST':
+    form = ListingForm(request.POST)
+    if form.is_valid():
+      list = form.save()
+      return redirect('list-detail', list.id)
+  else:
+    form = ListingForm()
+  return render(request,'listings/listing_create.html',{'form':form})
+    
+  

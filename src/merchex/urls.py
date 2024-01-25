@@ -31,6 +31,8 @@ urlpatterns = [
 
     path('listings/',views.lists,name="list-list"),
     path('listings/<int:list_id>/',views.list_detail,name="list-detail"),
+    path('listings/add/',views.list_create,name='list-create'),
+    
     path('contact/',views.contact,name="contact"),
     path('email/',views.email,name="email-sent")
    
