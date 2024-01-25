@@ -10,7 +10,7 @@ Bands Detail Page
 {% block content %}
 <h2>{{bands}} bands with id of:  {{id}}</h2>
 <div>
-  <h5>Go back to Band Lists Page</h5>
+
 <a href='{% url "band-list" %}'>Band lists page</a>
 </div>
 <br>
@@ -24,7 +24,7 @@ Bands Detail Page
 
 {% if bands.official_homepage %}
 <div>
-<a style="color:white"; target="_blank" href="{{bands.official_homepage}}">{{bands.name}}</a>
+<a  target="_blank" href="{{bands.official_homepage}}">{{bands.name}}</a>
 </div>
 
 {% endif %}
