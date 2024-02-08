@@ -71,6 +71,10 @@ def contact(request):
   
   return render(request,'listings/contact.html',{'form':form})
   
+  
+  
+  
+# --------------- BANDS SECTION-------------
 
 # create bands
 def band_create(request):
@@ -87,7 +91,26 @@ def band_create(request):
   
   return render(request,'listings/band_create.html',{'form':form})
 
+# update band
+def update_band(request,id):
+  band = Band.objects.get(id=id)
+  if request.method == "POST":
+    form = BandForm(request.POST,instance=band)
+    if form.is_valid():
+      form.save()
+      return redirect('band-detail',band.id)
+  else:
+    form = BandForm(instance=band)
+    
+  
+  return render(request,'listings/band_update.html',{'form':form})
+  
 
+
+
+
+# ----------- LISTINGS SECTION ------------
+# create listing
 def list_create(request):
   if request.method == 'POST':
     form = ListingForm(request.POST)

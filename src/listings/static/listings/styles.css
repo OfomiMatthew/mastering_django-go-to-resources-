@@ -1,9 +1,11 @@
-/* *{
 
-  
-  box-sizing: border-box;
+nav ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+}
 
-  background-color: #232323;
-  color: white;
-  font-family: 'Courier New', Courier, monospace;
-} */
+ul li {
+  list-style: none;
+}
