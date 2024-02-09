@@ -2,20 +2,19 @@
 
 
 {% block title %}
-  Create Listings
+  Update Listing
 {% endblock title %}
   
 {% block content %}
+<h1>Update Listing</h1>
 
-<h1>Create Listing</h1>
 <form action="" method="post">
-{% csrf_token %} 
+{% csrf_token %}
 {{form.as_p}}
 <input type="submit" value="Submit">
+
 </form>
 
-
 {% endblock content %}
-
 
 

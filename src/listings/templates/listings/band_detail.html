@@ -12,6 +12,8 @@ Bands Detail Page
 <div>
 
 <a href='{% url "band-list" %}'>Band lists page</a>
+
+
 </div>
 <br>
 
@@ -19,6 +21,7 @@ Bands Detail Page
 <li>Bio: {{bands.biography}}</li>
 <li>Year_Formed: {{bands.year_formed}}</</li>
 <strong><li>isActive: {{bands.active | yesno}}</</li></strong>
+
 
 </ul>
 

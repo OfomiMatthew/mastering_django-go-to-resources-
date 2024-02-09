@@ -121,4 +121,15 @@ def list_create(request):
     form = ListingForm()
   return render(request,'listings/listing_create.html',{'form':form})
     
+def update_listing(request,id):
+  lists = Listing.objects.get(id=id)
+  if request.method == 'POST':
+    form = ListingForm(request.POST,instance=lists)
+    if form.is_valid():
+      form.save()
+      return redirect('list-detail',lists.id)
+  else:
+    form = ListingForm(instance=lists)
+  return render(request,'listings/list_update.html',{'form':form})
+  
   
